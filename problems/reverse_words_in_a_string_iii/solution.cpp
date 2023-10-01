@@ -1,18 +1,21 @@
 class Solution {
 public:
-    string reverseWords(string s) 
-    {
-        int n=s.size(),a=0,b=0;
-        while(a<n)
-        {
-            while(b<n and s[b]!=' ')
-            {
-                b++;
-            }
-            reverse(s.begin()+a,s.begin()+b);
-            a=b+1;
-            b=a;
-        }
-        return s;
+    string reverseWords(string s) {
+           string ans;
+           string str;
+           for(int i=0; i<s.size(); i++){
+                if(s[i] != ' '){
+                    str += s[i];
+                }
+                else{
+                    reverse(str.begin(), str.end());
+                    ans += str;
+                    str = "";
+                    ans += ' ';
+                }
+           }
+           reverse(str.begin(), str.end());
+           ans += str;
+           return ans;
     }
 };
